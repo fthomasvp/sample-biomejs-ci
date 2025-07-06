@@ -1,0 +1,19 @@
+{
+	"files.exclude": {
+		"**/.git": false,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true
+	},
+
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	},
+
+	"eslint.enable": false,
+	"prettier.enable": false
+}
