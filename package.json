@@ -1,0 +1,16 @@
+{
+	"name": "sample-biomejs-ci",
+	"version": "1.0.0",
+	"scripts": {
+		"prestart": "tsc -p .",
+		"start": "node ./dist/index.js",
+		"format": "biome format",
+		"lint": "biome lint"
+	},
+	"license": "MIT",
+	"packageManager": "pnpm@10.12.4",
+	"devDependencies": {
+		"@biomejs/biome": "2.0.6",
+		"typescript": "^5.8.3"
+	}
+}
