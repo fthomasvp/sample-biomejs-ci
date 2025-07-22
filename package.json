@@ -2,10 +2,11 @@
 	"name": "sample-biomejs-ci",
 	"version": "1.0.0",
 	"scripts": {
-		"prestart": "tsc -p .",
-		"start": "node ./dist/index.js",
+		"build": "tsc -p .",
 		"format": "biome format",
-		"lint": "biome lint"
+		"lint": "biome lint",
+		"prestart": "pnpm build",
+		"start": "node ./dist/index.js"
 	},
 	"license": "MIT",
 	"packageManager": "pnpm@10.12.4",
