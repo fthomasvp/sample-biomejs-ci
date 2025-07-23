@@ -5,14 +5,14 @@ name: ci-with-nodejs
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
     branches:
-      - "bugfix/**"
-      - "feature/**"
-      - "hotfix/**"
-      - "release/**"
-      - "test/**"
+      - 'bugfix/**'
+      - 'feature/**'
+      - 'hotfix/**'
+      - 'release/**'
+      - 'test/**'
     paths-ignore:
       - 'README.md'
 
