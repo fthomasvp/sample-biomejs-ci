@@ -5,14 +5,14 @@ name: ci-with-nodejs
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
     branches:
-      - "bugfix/**"
-      - "feature/**"
-      - "hotfix/**"
-      - "release/**"
-      - "test/**"
+      - 'bugfix/**'
+      - 'feature/**'
+      - 'hotfix/**'
+      - 'release/**'
+      - 'test/**'
     paths-ignore:
       - 'README.md'
 
@@ -39,6 +39,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
     # https://pnpm.io/cli/install#--frozen-lockfile
-    - run: pnpm install
-    - run: pnpm run --if-present build
-    - run: pnpm run test
+    - name: Install dependencies
+      run: pnpm install
+    - name: Build
+      run: pnpm run build
+    - name: Upload dist
+      if: github.base_ref == 'main'
+      uses: actions/upload-artifact@v4
+      with:
+        name: latest-sample-biomejs-ci
+        path: dist
+        retention-days: 14
+    - name: Test
+      run: pnpm run test
