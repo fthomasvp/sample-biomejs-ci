@@ -40,5 +40,5 @@ jobs:
         cache: 'pnpm'
     # https://pnpm.io/cli/install#--frozen-lockfile
     - run: pnpm install
-    - run: pnpm run build --if-present
+    - run: pnpm run --if-present build
     - run: pnpm run test
