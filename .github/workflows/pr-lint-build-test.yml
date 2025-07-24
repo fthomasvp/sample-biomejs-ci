@@ -18,6 +18,7 @@ on:
       - 'README.md'
 
 env:
+  # Evaluates to string 'true' or 'false'
   isMainMerge: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
 
 jobs:
@@ -31,7 +32,6 @@ jobs:
         node-version: [22.x]
 
     steps:
-    - run: echo ${{ env.isMainMerge }}
     - uses: actions/checkout@v4
     - name: Log GitHub context
       env:
