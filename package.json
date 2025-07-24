@@ -5,6 +5,7 @@
 		"build": "tsc -p .",
 		"format": "biome format",
 		"lint": "biome lint",
+		"lint:staged": "biome lint --staged",
 		"prestart": "pnpm build",
 		"start": "node ./dist/index.js",
 		"test": "vitest run",
