@@ -17,6 +17,9 @@ on:
     paths-ignore:
       - 'README.md'
 
+env:
+  isMainMerge: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+
 jobs:
   build:
 
@@ -47,15 +50,17 @@ jobs:
     - name: Install dependencies
       run: pnpm install
     - name: Lint
+      if: !env.isMainMerge
       run: pnpm run lint
     - name: Build
       run: pnpm run build
     - name: Upload dist
-      if: github.event_name == 'push' && github.ref_name == 'main'
+      if: env.isMainMerge
       uses: actions/upload-artifact@v4
       with:
         name: latest-sample-biomejs-ci
         path: dist
         retention-days: 14
     - name: Test
+      if: !env.isMainMerge
       run: pnpm run test
