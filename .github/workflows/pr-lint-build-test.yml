@@ -51,17 +51,17 @@ jobs:
     - name: Install dependencies
       run: pnpm install
     - name: Lint
-      if: ${{ env.isMainMerge == false }}
+      if: env.isMainMerge == 'false'
       run: pnpm run lint
     - name: Build
       run: pnpm run build
     - name: Upload dist
-      if: ${{ env.isMainMerge == true }}
+      if: env.isMainMerge == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: latest-sample-biomejs-ci
         path: dist
         retention-days: 14
     - name: Test
-      if: ${{ env.isMainMerge == false }}
+      if: env.isMainMerge == 'false'
       run: pnpm run test
