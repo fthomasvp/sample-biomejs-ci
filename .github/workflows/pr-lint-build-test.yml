@@ -1,11 +1,9 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Pull Request - Lint, Build and Test
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - 'main'
   pull_request:
     branches:
       - 'main'
@@ -18,7 +16,7 @@ on:
       - 'README.md'
 
 env:
-  # Evaluates to string 'true' or 'false'
+  # Evaluate to string 'true' or 'false'
   isMainMerge: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
 
 jobs:
@@ -34,20 +32,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Log GitHub context
+      run: echo "$GITHUB_CONTEXT"
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
     - name: Install pnpm
       uses: pnpm/action-setup@v4
       # with:
-        # https://github.com/pnpm/action-setup?tab=readme-ov-file#install-only-pnpm-with-packagemanager
+        # See https://github.com/pnpm/action-setup?tab=readme-ov-file#install-only-pnpm-with-packagemanager
         # version: 10
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    # https://pnpm.io/cli/install#--frozen-lockfile
+    # See https://pnpm.io/cli/install#--frozen-lockfile
     - name: Install dependencies
       run: pnpm install
     - name: Lint
@@ -55,7 +53,7 @@ jobs:
       run: pnpm run lint
     - name: Build
       run: pnpm run build
-    - name: Upload dist
+    - name: Upload artifact
       if: env.isMainMerge == 'true'
       uses: actions/upload-artifact@v4
       with:
