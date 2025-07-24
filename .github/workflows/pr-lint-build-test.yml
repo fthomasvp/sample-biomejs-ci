@@ -17,20 +17,20 @@ on:
     paths-ignore:
       - 'README.md'
 
-env:
-  isMainMerge: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
+    env:
+      isMainMerge: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
     strategy:
       matrix:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         node-version: [22.x]
 
     steps:
+    - run: echo ${{ env.isMainMerge }}
     - uses: actions/checkout@v4
     - name: Log GitHub context
       env:
