@@ -2,7 +2,7 @@
 	"name": "sample-biomejs-ci",
 	"version": "1.0.0",
 	"scripts": {
-		"build": "tsc -p .",
+		"build": "tsc --build",
 		"format": "biome format",
 		"lint": "biome lint",
 		"lint:staged": "biome lint --staged",
@@ -10,7 +10,8 @@
 		"prestart": "pnpm build",
 		"start": "node ./dist/index.js",
 		"test": "vitest run",
-		"test:watch": "vitest watch"
+		"test:watch": "vitest watch",
+		"type-check": "tsc --noEmit"
 	},
 	"license": "MIT",
 	"packageManager": "pnpm@10.12.4",
