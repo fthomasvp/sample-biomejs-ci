@@ -6,6 +6,7 @@
 		"format": "biome format",
 		"lint": "biome lint",
 		"lint:staged": "biome lint --staged",
+		"postinstall": "git config core.hooksPath ./.githooks",
 		"prestart": "pnpm build",
 		"start": "node ./dist/index.js",
 		"test": "vitest run",
