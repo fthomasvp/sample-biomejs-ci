@@ -60,6 +60,6 @@ jobs:
         name: latest-sample-biomejs-ci
         path: dist
         retention-days: 14
-    - name: Test
+    - name: Unit test
       if: env.isMainMerge == 'false'
       run: pnpm run test
