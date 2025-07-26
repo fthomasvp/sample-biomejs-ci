@@ -55,6 +55,7 @@ jobs:
       if: env.isMainMerge == 'false'
       run: pnpm run type-check
     - name: Build
+      if: env.isMainMerge == 'true'
       run: pnpm run build
     - name: Upload artifact
       if: env.isMainMerge == 'true'
