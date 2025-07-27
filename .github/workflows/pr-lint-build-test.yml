@@ -31,10 +31,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Log GitHub context
-      run: echo "$GITHUB_CONTEXT"
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
     - name: Install pnpm
       uses: pnpm/action-setup@v4
       # with:
